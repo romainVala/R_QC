@@ -1,0 +1,9 @@
+Package: rfonc
+Type: Package
+Title: package with all my functions ...
+Version: 1.0
+Date: 2015-02-13
+Author: Romain Valabtegue
+Maintainer: Who to complain to <yourfault@somewhere.net>
+Description: More about what it does (maybe more than one line)
+License: freeeee !

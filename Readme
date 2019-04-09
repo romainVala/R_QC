@@ -1,0 +1,38 @@
+
+edit init_path.R and change the path, to your current path
+
+
+%first run the histogram fitting with the R command : 
+
+
+cd dir where the data.nii.gz  is 
+ Rscript /fullpath /volume_hist_bg_create_mask.R data.nii.gz
+
+
+If there is a file name bg_mask_crop.nii.gz in the current dir, it will take the background mask to compute signal std, if not it will create the background mask (For the paper I took your background mask or a version eddited manually (not sure)
+
+
+
+this will create a csv with std in backgroup and the different peak
+
+
+
+x_pos_sig : will be the mean peak Signal level (which depend of the total number of peak found as follow
+
+    if x_data_P4_pos(k)>0
+        x_pos_sig(k) = (cout.x_data_P4_pos(k)+cout.x_data_P3_pos(k)+cout.x_data_P2_pos(k))/3;
+    elseif x_data_P3_pos(k)>0
+        x_pos_sig(k) = (cout.x_data_P3_pos(k)+cout.x_data_P2_pos(k))/2;
+
+    elseif x_data_P2_pos(k)>0
+        x_pos_sig(k) = cout.x_data_P2_pos(k);
+    else
+        x_pos_sig(k) = cout.x_data_P1_pos(k);
+    end
+ 
+
+then SNR is 
+	x_pos_sig/noise_std
+
+(noise_std is the field in the csv file)
+
